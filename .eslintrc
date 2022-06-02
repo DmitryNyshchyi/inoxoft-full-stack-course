@@ -1,0 +1,141 @@
+{
+  "plugins": [
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "camelcase": "off",
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          [
+            "internal",
+            "object",
+            "parent",
+            "sibling",
+            "index"
+          ]
+        ],
+        "pathGroups": [
+          {
+            "pattern": "./",
+            "group": "object",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "builtin"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always-and-inside-groups"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-unused-prop-types": "error",
+    "react/require-default-props": "off",
+    "react/no-unescaped-entities": "off",
+    "react/display-name": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never"
+      }
+    ],
+    "quotes": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": [
+          "Link"
+        ],
+        "specialLink": [
+          "hrefLeft",
+          "hrefRight"
+        ],
+        "aspects": [
+          "invalidHref",
+          "preferButton"
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "docusaurus/website/src/**/*.js",
+        "packages/cra-template/**/*.js",
+        "packages/react-error-overlay/**/*.js",
+        "packages/react-scripts/fixtures/kitchensink/template/{src,integration}/**/*.js",
+        "test/fixtures/*/src/*.js"
+      ],
+      "excludedFiles": [
+        "packages/react-error-overlay/*.js"
+      ],
+      "extends": [
+        "react-app",
+        "react-app/jest"
+      ]
+    },
+    {
+      "files": [
+        "test/fixtures/webpack-message-formatting/src/{AppLintError,AppLintWarning,AppUnknownFile}.js"
+      ],
+      "rules": {
+        "no-unused-vars": "off",
+        "no-undef": "off"
+      }
+    },
+    {
+      "files": [
+        "test/fixtures/webpack-message-formatting/src/Export5.js"
+      ],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
+    },
+    {
+      "files": [
+        "test/fixtures/issue-5176-flow-class-properties/src/App.js"
+      ],
+      "rules": {
+        "no-dupe-class-members": "off"
+      }
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
