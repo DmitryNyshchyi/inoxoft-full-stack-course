@@ -59,19 +59,11 @@
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
     "react/no-unused-prop-types": "error",
+    "react/prop-types": "off",
     "react/require-default-props": "off",
     "react/no-unescaped-entities": "off",
     "react/display-name": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
-      {
-        "ts": "never",
-        "tsx": "never",
-        "js": "never",
-        "jsx": "never"
-      }
-    ],
+    "import/extensions": "off",
     "quotes": "off",
     "jsx-a11y/anchor-is-valid": [
       "error",
