@@ -10,6 +10,7 @@ const CreateListItem = ({ createNewTodoItem }) => {
     createNewTodoItem({
       id: value.replace(/\s/g, ''),
       title: value.trim(),
+      isComplete: false,
     });
     setValue('');
   };
