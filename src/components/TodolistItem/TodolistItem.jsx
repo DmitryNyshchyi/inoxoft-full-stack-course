@@ -1,42 +1,40 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ListItem = ({
+const TodolistItem = ({
   id,
   title,
   handleEdit,
   handleDelete,
   handleComplete,
   isComplete,
-}) => {
-  return (
-    <Item>
-      <Title isComplete={isComplete}>{title}</Title>
+}) => (
+  <Item>
+    <Title isComplete={isComplete}>{title}</Title>
 
-      <Actions>
-        <ActionsComplete
-          onClick={() => handleComplete(id)}
-          type="checkbox"
-          checked={isComplete}
-        />
+    <Actions>
+      <ActionsComplete
+        onClick={() => handleComplete(id)}
+        type="checkbox"
+        checked={isComplete}
+      />
 
-        <i
-          className="fa fa-pencil"
-          aria-hidden="true"
-          onClick={() => handleEdit(id)}
-        />
+      <i
+        className="fa fa-pencil"
+        aria-hidden="true"
+        onClick={() => handleEdit(id)}
+      />
 
-        <i
-          className="fa fa-trash-o"
-          aria-hidden="true"
-          onClick={() => handleDelete(id)}
-        />
-      </Actions>
-    </Item>
-  );
-};
+      <i
+        className="fa fa-trash-o"
+        aria-hidden="true"
+        onClick={() => handleDelete(id)}
+      />
+    </Actions>
+  </Item>
+);
 
-export default ListItem;
+export default TodolistItem;
 
 const Item = styled.div`
   padding: 5px 10px;

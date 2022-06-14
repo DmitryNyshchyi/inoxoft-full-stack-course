@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
-const EditListItem = ({ item, handleClose, handleSave }) => {
+const EditTodolistItem = ({ item, handleClose, handleSave }) => {
   const [value, setValue] = useState(item?.title || '');
 
   return (
     <Modal show onHide={handleClose} backdrop="static" keyboard={false}>
       <Modal.Header closeButton>
-        <Modal.Title>Edit item</Modal.Title>
+        <Modal.Title>Edit todolist</Modal.Title>
       </Modal.Header>
 
       <Modal.Body>
@@ -40,4 +40,4 @@ const EditListItem = ({ item, handleClose, handleSave }) => {
   );
 };
 
-export default EditListItem;
+export default EditTodolistItem;

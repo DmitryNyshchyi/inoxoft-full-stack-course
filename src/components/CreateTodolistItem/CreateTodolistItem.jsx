@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const CreateListItem = ({ createNewTodoItem }) => {
+const CreateTodolistItem = ({ createNewTodolistItem }) => {
   const [value, setValue] = useState('');
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
-    createNewTodoItem({
+    createNewTodolistItem({
       id: value.replace(/\s/g, ''),
       title: value.trim(),
       isComplete: false,
@@ -30,7 +30,7 @@ const CreateListItem = ({ createNewTodoItem }) => {
   );
 };
 
-export default CreateListItem;
+export default CreateTodolistItem;
 
 const Form = styled.form`
   padding: 5px 0;

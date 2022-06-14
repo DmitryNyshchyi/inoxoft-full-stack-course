@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import List from './components/List/List';
+import Todolist from './components/Todolist/Todolist';
 
 function App() {
   return (
     <AppWrapper>
-      <List />
+      <Todolist />
     </AppWrapper>
   );
 }

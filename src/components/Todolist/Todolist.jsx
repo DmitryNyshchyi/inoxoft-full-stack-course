@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import CreateListItem from '../CreateListItem/CreateListItem';
-import EditListItem from '../EditListItem/EditListItem';
-import ListItem from '../ListItem/ListItem';
+import CreateTodolistItem from '../CreateTodolistItem/CreateTodolistItem';
+import EditTodolistItem from '../EditTodolistItem/EditTodolistItem';
+import TodolistItem from '../TodolistItem/TodolistItem';
 
-const initialTodoList = [
+const initialTodolist = [
   { id: 'react', title: 'Learn ReactJS', isComplete: true },
   { id: 'node', title: 'Learn NodeJS', isComplete: false },
   { id: 'next', title: 'Learn NextJS', isComplete: true },
@@ -17,54 +17,54 @@ const Filters = {
   Todo: 'Todo',
 };
 
-const List = () => {
+const Todolist = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentFilter, setCurrentFilter] = useState(Filters.All);
-  const [todoList, setTodoList] = useState(initialTodoList);
+  const [todolist, setTodolist] = useState(initialTodolist);
 
   const ModalProps = {
     handleClose: () => setSelectedItem(null),
     handleSave: (newItem) => {
-      setTodoList(
-        todoList.map((item) => (item.id === newItem.id ? newItem : item)),
+      setTodolist(
+        todolist.map((item) => (item.id === newItem.id ? newItem : item)),
       );
       setSelectedItem(null);
     },
     item: selectedItem,
   };
 
-  const ListItemProps = {
+  const TodolistItemProps = {
     handleEdit: (id) => {
-      setSelectedItem(todoList.find((item) => item.id === id));
+      setSelectedItem(todolist.find((item) => item.id === id));
     },
     handleDelete: (id) => {
-      setTodoList(todoList.filter((item) => item.id !== id));
+      setTodolist(todolist.filter((item) => item.id !== id));
     },
     handleComplete: (id) => {
-      setTodoList(
-        todoList.map((item) =>
+      setTodolist(
+        todolist.map((item) =>
           item.id === id ? { ...item, isComplete: true } : item,
         ),
       );
     },
   };
 
-  const createNewTodoItem = (item) => setTodoList([...todoList, item]);
+  const createNewTodolistItem = (item) => setTodolist([...todolist, item]);
 
-  const getFilteredTodoList = () => {
+  const getFilteredTodolist = () => {
     switch (currentFilter) {
       case Filters.Done:
-        return todoList.filter(({ isComplete }) => isComplete);
+        return todolist.filter(({ isComplete }) => isComplete);
       case Filters.Todo:
-        return todoList.filter(({ isComplete }) => !isComplete);
+        return todolist.filter(({ isComplete }) => !isComplete);
       default:
-        return todoList;
+        return todolist;
     }
   };
 
   return (
     <ListWrapper>
-      <CreateListItem createNewTodoItem={createNewTodoItem} />
+      <CreateTodolistItem createNewTodolistItem={createNewTodolistItem} />
       <ListHeader>List Component:</ListHeader>
 
       <ListFilters>
@@ -82,17 +82,17 @@ const List = () => {
       </ListFilters>
 
       <ListBody>
-        {getFilteredTodoList()?.map((item) => (
-          <ListItem key={item.id} {...item} {...ListItemProps} />
+        {getFilteredTodolist()?.map((item) => (
+          <TodolistItem key={item.id} {...item} {...TodolistItemProps} />
         ))}
       </ListBody>
 
-      {!!selectedItem && <EditListItem {...ModalProps} />}
+      {!!selectedItem && <EditTodolistItem {...ModalProps} />}
     </ListWrapper>
   );
 };
 
-export default List;
+export default Todolist;
 
 const ListWrapper = styled.div`
   color: black;
