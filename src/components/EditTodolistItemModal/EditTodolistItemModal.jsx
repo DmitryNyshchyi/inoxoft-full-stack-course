@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
-const EditTodolistItem = ({ item, handleClose, handleSave }) => {
+const EditTodolistItemModal = ({ item, handleClose, handleSave }) => {
   const [value, setValue] = useState(item?.title || '');
 
   return (
@@ -40,4 +40,4 @@ const EditTodolistItem = ({ item, handleClose, handleSave }) => {
   );
 };
 
-export default EditTodolistItem;
+export default EditTodolistItemModal;

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import CreateTodolistItem from '../CreateTodolistItem/CreateTodolistItem';
-import EditTodolistItem from '../EditTodolistItem/EditTodolistItem';
+import EditTodolistItemModal from '../EditTodolistItemModal/EditTodolistItemModal';
+import FiltersBar from '../FiltersBar/FiltersBar';
+import { Filters } from '../FiltersBar/FiltersBar.utils';
 import TodolistItem from '../TodolistItem/TodolistItem';
 
 const initialTodolist = [
@@ -10,12 +12,6 @@ const initialTodolist = [
   { id: 'node', title: 'Learn NodeJS', isComplete: false },
   { id: 'next', title: 'Learn NextJS', isComplete: true },
 ];
-
-const Filters = {
-  All: 'All',
-  Done: 'Done',
-  Todo: 'Todo',
-};
 
 const Todolist = () => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -68,20 +64,7 @@ const Todolist = () => {
       <CreateTodolistItem createNewTodolistItem={createNewTodolistItem} />
 
       <ListHeader>Todolist:</ListHeader>
-
-      <ListFilters>
-        <button onClick={() => setCurrentFilter(Filters.All)}>
-          {Filters.All}
-        </button>
-
-        <button onClick={() => setCurrentFilter(Filters.Todo)}>
-          {Filters.Todo}
-        </button>
-
-        <button onClick={() => setCurrentFilter(Filters.Done)}>
-          {Filters.Done}
-        </button>
-      </ListFilters>
+      <FiltersBar setCurrentFilter={setCurrentFilter} />
 
       <ListBody>
         {getFilteredTodolist()?.map((item) => (
@@ -89,7 +72,7 @@ const Todolist = () => {
         ))}
       </ListBody>
 
-      {!!selectedItem && <EditTodolistItem {...ModalProps} />}
+      {!!selectedItem && <EditTodolistItemModal {...ModalProps} />}
     </ListWrapper>
   );
 };
@@ -103,25 +86,6 @@ const ListWrapper = styled.div`
   margin: 50px auto;
   border: 1px solid black;
   padding: 20px;
-`;
-
-const ListFilters = styled.div`
-  color: black;
-  width: 100%;
-  margin: 15px 0;
-
-  & > button {
-    outline: none;
-    border: unset;
-    background: black;
-    color: white;
-    margin-right: 10px;
-    padding: 1px 10px;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
 `;
 
 const ListHeader = styled.div`
