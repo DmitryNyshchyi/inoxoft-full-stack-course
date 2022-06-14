@@ -64,8 +64,10 @@ const Todolist = () => {
 
   return (
     <ListWrapper>
+      <ListHeader>Create todolist item:</ListHeader>
       <CreateTodolistItem createNewTodolistItem={createNewTodolistItem} />
-      <ListHeader>List Component:</ListHeader>
+
+      <ListHeader>Todolist:</ListHeader>
 
       <ListFilters>
         <button onClick={() => setCurrentFilter(Filters.All)}>
@@ -123,9 +125,9 @@ const ListFilters = styled.div`
 `;
 
 const ListHeader = styled.div`
-  font-size: 30px;
-  margin: 20px 0;
-  font-weight: 700;
+  font-size: 26px;
+  margin: 25px 0 15px;
+  font-weight: 600;
 `;
 
 const ListBody = styled.div`
